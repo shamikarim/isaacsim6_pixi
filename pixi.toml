@@ -1,0 +1,37 @@
+[workspace]
+authors = ["shamikarim <ahresgg@gmail.com>"]
+channels = ["conda-forge"]
+name = "isaacsim6"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[system-requirements]
+libc = { family = "glibc", version = "2.35" }
+
+[dependencies]
+python = "3.12.*"
+pip = "*"
+setuptools = "<82"
+packaging = "==26.0"
+
+[pypi-options]
+extra-index-urls = [
+  "https://pypi.nvidia.com",
+  "https://download.pytorch.org/whl/cu128",
+]
+index-strategy = "unsafe-best-match"
+prerelease-mode = "allow"
+
+[pypi-dependencies]
+torch = "==2.11.0"
+isaacsim = { version = "==6.0.0.1", extras = ["all", "extscache"] }
+
+[activation.env]
+OMNI_KIT_ACCEPT_EULA = "YES"
+PYTHONNOUSERSITE = "1"
+
+[tasks]
+check-isaac = "python -c 'import isaacsim; print(\"Isaac Sim import OK\")'"
+isaac = "isaacsim"
+isaac-full = "isaacsim isaacsim.exp.full"
+isaac-compat = "isaacsim isaacsim.exp.compatibility_check"

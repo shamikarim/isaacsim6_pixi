@@ -31,7 +31,5 @@ OMNI_KIT_ACCEPT_EULA = "YES"
 PYTHONNOUSERSITE = "1"
 
 [tasks]
-check-isaac = "python -c 'import isaacsim; print(\"Isaac Sim import OK\")'"
 isaac = "isaacsim"
-isaac-full = "isaacsim isaacsim.exp.full"
-isaac-compat = "isaacsim isaacsim.exp.compatibility_check"
+isaac-newton = "isaacsim --/app/extensions/registryEnabled=1 --enable isaacsim.physics.newton --enable isaacsim.physics.newton.tensors"
